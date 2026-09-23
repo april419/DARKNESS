@@ -1,0 +1,19 @@
+{
+  "name": "darkness",
+  "version": "1.0.0",
+  "description": "Darkness multiplayer survival game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "game",
+    "multiplayer",
+    "websocket"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: darkness
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: PORT=$PORT node server.js

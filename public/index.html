@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DARKNESS</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="startScreen" class="screen">
+        <div class="panel">
+          <h1>DARKNESS</h1>
+          <label>
+            Name
+            <input id="name" maxlength="16" value="Player" />
+          </label>
+          <div class="stack">
+            <button id="create">Create Room</button>
+            <div class="joinRow">
+              <input id="room" maxlength="5" placeholder="ROOM CODE" />
+              <button id="join">Join</button>
+            </div>
+          </div>
+          <div id="error" class="error"></div>
+        </div>
+      </div>
+
+      <div id="lobbyScreen" class="screen hidden">
+        <div class="panel">
+          <div class="topbar">
+            <span>ROOM</span>
+            <strong id="roomCode">----</strong>
+          </div>
+          <h2>Lobby</h2>
+          <div id="lobbyPlayers" class="lobbyPlayers"></div>
+          <button id="start" class="primary">Start Descent</button>
+          <div id="lobbyHint" class="hint">Waiting for at least 2 players...</div>
+        </div>
+      </div>
+
+      <div id="game" class="screen hidden">
+        <div class="hud">
+          <div class="stat">
+            <span>Floor</span>
+            <strong id="floor">0</strong>
+          </div>
+          <div class="stat">
+            <span>Area</span>
+            <strong id="floorName">LOBBY</strong>
+          </div>
+          <div class="stat wide">
+            <span>Objective</span>
+            <strong id="objective">AWAITING</strong>
+          </div>
+        </div>
+
+        <div class="statusRow">
+          <div class="miniStat"><span>HP</span><strong id="health">100</strong></div>
+          <div class="miniStat"><span>STA</span><strong id="stamina">100</strong></div>
+          <div class="miniStat"><span>BAT</span><strong id="battery">100</strong></div>
+        </div>
+
+        <div class="gameBoard">
+          <div id="visionOverlay" class="visionOverlay"></div>
+          <div id="wallLayer" class="wallLayer"></div>
+          <div id="sceneHints" class="sceneHints"></div>
+          <div id="flashlightGrip" class="flashlightGrip"></div>
+          <div id="monster" class="monster hidden">M</div>
+          <div id="fuseTarget" class="fuse hidden">FUSE</div>
+          <div id="escapeTarget" class="escape hidden">EXIT</div>
+          <div id="players" class="players"></div>
+        </div>
+
+        <div class="actions">
+          <button id="search">SEARCH</button>
+          <button id="useItem">USE ITEM</button>
+          <button id="advance">ADVANCE</button>
+          <button id="fuse">FUSE</button>
+          <button id="escape">ESCAPE</button>
+          <button id="flashlight">FLASHLIGHT ON</button>
+        </div>
+
+        <div class="panel small">
+          <div id="inventory" class="inventory">INVENTORY: EMPTY</div>
+          <div id="log" class="log"></div>
+        </div>
+
+        <div class="panel small">
+          <h3>Players</h3>
+          <div id="playerList" class="playerList"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay" class="overlay hidden">
+      <div class="overlayCard">
+        <h2 id="overlayTitle">GAME OVER</h2>
+        <p id="overlayText"></p>
+        <button id="overlayBtn">RELOAD</button>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
