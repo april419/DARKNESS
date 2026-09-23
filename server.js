@@ -136,8 +136,16 @@ function handleMessage(ws, rawMessage) {
 
 function createServer(port) {
   const server = http.createServer((req, res) => {
-    const safePath = req.url === '/' ? '/index.html' : req.url;
-    const filePath = path.join(PUBLIC_DIR, safePath);
+    const requestUrl = new URL(req.url || '/', 'http://localhost');
+    const pathname = requestUrl.pathname;
+    const safePath = pathname === '/' ? '/index.html' : pathname;
+    const filePath = path.resolve(PUBLIC_DIR, `.${safePath}`);
+
+    if (!filePath.startsWith(PUBLIC_DIR)) {
+      res.writeHead(403, { 'Content-Type': 'text/plain' });
+      res.end('Forbidden');
+      return;
+    }
 
     fs.stat(filePath, (err, stats) => {
       if (err || !stats.isFile()) {
